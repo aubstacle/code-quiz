@@ -1,3 +1,4 @@
+// DOM VARIABLES
 var startBtn = document.getElementById("startQuiz");
 var questionEl = document.getElementById("question");
 var answerBtnOne = document.getElementById("answer-1");
@@ -7,6 +8,7 @@ var answerBtnFour = document.getElementById("answer-4");
 var timeLeft = 60;
 var score = 0;
 
+//Question Object containing all 5 questions with a correct answer and 4 possible options each
 var questionList = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -47,23 +49,27 @@ var questionList = [
   },
 ];
 
+//Event listener for starting the game, calling the startTimer function
 startBtn.addEventListener("click", startTimer);
 
+//Start timer function that simultaneously starts the timer, calls the first question function and also ends the game 
 function startTimer() {
-    questionFunction();
+  questionFunction();
   timerInterval = setInterval(function () {
     timeLeft--;
-    countdownTimer.textContent = timeLeft + " secs remaining!!!";
-    if (timeLeft === 0) {
-      endGame();
+    countdownTimer.textContent =
+      timeLeft + " secs remaining!!! Your score is " + score;
+    if (timeLeft <= 0) {
+      endQuiz();
     }
   }, 1000);
 }
 
-function endGame() {
-    alert("You're out of time!!");
-    clearInterval(timerInterval);
-    timeLeft = 60;
+// End Game
+function endQuiz() {
+  alert("You're out of time!! Score: " + score);
+  clearInterval(timerInterval);
+  window.location.reload(false);
 }
 
 function questionFunction() {
@@ -75,12 +81,12 @@ function questionFunction() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction2();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction2();
   };
   answerBtnThree.onclick = function () {
@@ -90,7 +96,7 @@ function questionFunction() {
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction2();
   };
 }
@@ -104,21 +110,22 @@ function questionFunction2() {
 
   answerBtnOne.onclick = function () {
     alert("Correct!");
+    score++;
     questionFunction3();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction3();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction3();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction3();
   };
 }
@@ -132,21 +139,22 @@ function questionFunction3() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction4();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction4();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction4();
   };
   answerBtnFour.onclick = function () {
     alert("Correct!");
+    score++;
     questionFunction4();
   };
 }
@@ -160,21 +168,22 @@ function questionFunction4() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction5();
   };
   answerBtnTwo.onclick = function () {
     alert("Correct!");
+    score++;
     questionFunction5();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction5();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
+    timeLeft -= 5;
     questionFunction5();
   };
 }
@@ -188,22 +197,28 @@ function questionFunction5() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
-    // call show score function
+    timeLeft -= 5;
+    showScore();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
-    // call show score function
+    timeLeft -= 5;
+    showScore();
   };
   answerBtnThree.onclick = function () {
     alert("Correct!");
-    timeLeft -= 15;
-    // call show score function
+    score++;
+    timeLeft -= 5;
+    showScore();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 15;
-    // call show score function
+    timeLeft -= 5;
+    showScore();
   };
+}
+
+function showScore(){
+    alert("You're all done!! Score: " + score);
+    window.location.reload(false);
 }

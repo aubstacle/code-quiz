@@ -36,8 +36,9 @@ body {
   border-radius: 5px;
   font-weight: bolder;
   text-align: center;
-  margin-left: 350px;
-  margin-bottom: 300px;
+  position: relative;
+  left: 22.1em;
+  bottom: 3.1em;
 }
  
 #startQuiz {
