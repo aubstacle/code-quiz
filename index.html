@@ -10,19 +10,19 @@
   </head>
   <body>
     <div class="container">
-      <div id="question-card">
-        <div id="question">Aubrey's Code Quiz!</div>
-        <hr />
-        <div id="answers" class="btn-grid">
-          <button id="answer-1" class="answer-btn-1">A</button>
-          <button id="answer-2" class="answer-btn-2">B</button>
-          <button id="answer-3" class="answer-btn-3">C</button>
-          <button id="answer-4" class="answer-btn-4">D</button>
-        </div>
+      <div id="question">Aubrey's Code Quiz</div>
+      <hr />
+      <div id="answers" class="btn-grid hide">
+        <button id="answer-1" class="btn">(A)</button>
+        <button id="answer-2" class="btn">(B)</button>
+        <button id="answer-3" class="btn">(C)</button>
+        <button id="answer-4" class="btn">(D)</button>
       </div>
       <hr />
-      <button id="startQuiz" class="startQuiz btn">Start the Quiz</button>
-      <div id="countdownTimer"></div>
+      <button id="startQuiz" class="btn">Start the Quiz</button>
+      <button id="countdownTimer">
+        60 seconds remaining!<br />Score: 0 out of 5
+      </button>
     </div>
     <script src="./script.js"></script>
   </body>
