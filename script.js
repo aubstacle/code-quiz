@@ -1,14 +1,17 @@
-// DOM VARIABLES
+// DOM elements
 var startBtn = document.getElementById("startQuiz");
 var questionEl = document.getElementById("question");
 var answerBtnOne = document.getElementById("answer-1");
 var answerBtnTwo = document.getElementById("answer-2");
 var answerBtnThree = document.getElementById("answer-3");
 var answerBtnFour = document.getElementById("answer-4");
+
+// declared variables for start time of 60 sec and score of zero
 var timeLeft = 60;
 var score = 0;
 
-//Question Object containing all 5 questions with a correct answer and 4 possible options each
+// Question List object
+// contains 5 questions from provided gif w/ possible & correct answers
 var questionList = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -49,32 +52,32 @@ var questionList = [
   },
 ];
 
-//Event listener for starting the quiz, calling the startTimer function
-startBtn.addEventListener("click", startTimer);
-
-//Start timer function that simultaneously starts the timer, calls the first question function and also calls the end of quiz if time runs out
+// startTimer function simultaneously starts timer, starts quiz via question1 function, also ends of quiz if time runs out
 function startTimer() {
-  questionFunction();
+  question1();
   timerInterval = setInterval(function () {
     timeLeft--;
     countdownTimer.textContent =
-      timeLeft + " secs remaining!!! Your score is " + score;
+      timeLeft + " seconds remaining! Score: " + score + " out of 5";
     if (timeLeft <= 0) {
       endQuiz();
     }
   }, 1000);
+  // endQuiz alerts when time is up, presents score, clears timer interval, reloads window to start quiz
+  function endQuiz() {
+    alert("You're out of time! Score: " + score + " out of 5");
+    clearInterval(timerInterval);
+    window.location.reload(false);
+  }
+  // removes capability of clicking start button once quiz begins
+  startBtn.removeEventListener("click", startTimer);
 }
 
-// End quiz function lets you know that you're out of time, gives you your score, clears the timer interval and reloads the window to start the quiz over
-function endQuiz() {
-  alert("You're out of time!! Score: " + score);
-  clearInterval(timerInterval);
-  window.location.reload(false);
-}
-
-// Next 5 questionFunctions (lines 77-221) are for each of the 5 questions - I couldn't figure out how to refactor this into something more consolidated but it works!!
-// Each one calls on the next questionFunction with a click on any of the answers
-function questionFunction() {
+// Next 5 questionFunctions (lines 80-224) are for each of the 5 questions
+// Couldn't figure out how to refactor this into something more consolidated
+// Each button calls on the next question after .onlick after alerting correct or incorrect
+// Correct answer adds to score variable while incorrect subtracts 5 sec from 60 sec timer
+function question1() {
   questionEl.textContent = questionList[0].question;
   answerBtnOne.textContent = questionList[0].options[0];
   answerBtnTwo.textContent = questionList[0].options[1];
@@ -83,27 +86,27 @@ function questionFunction() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction2();
+    timeLeft -= 10;
+    question2();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction2();
+    timeLeft -= 10;
+    question2();
   };
   answerBtnThree.onclick = function () {
     alert("Correct!");
     score++;
-    questionFunction2();
+    question2();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction2();
+    timeLeft -= 10;
+    question2();
   };
 }
 
-function questionFunction2() {
+function question2() {
   questionEl.textContent = questionList[1].question;
   answerBtnOne.textContent = questionList[1].options[0];
   answerBtnTwo.textContent = questionList[1].options[1];
@@ -113,26 +116,26 @@ function questionFunction2() {
   answerBtnOne.onclick = function () {
     alert("Correct!");
     score++;
-    questionFunction3();
+    question3();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction3();
+    timeLeft -= 10;
+    question3();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction3();
+    timeLeft -= 10;
+    question3();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction3();
+    timeLeft -= 10;
+    question3();
   };
 }
 
-function questionFunction3() {
+function question3() {
   questionEl.textContent = questionList[2].question;
   answerBtnOne.textContent = questionList[2].options[0];
   answerBtnTwo.textContent = questionList[2].options[1];
@@ -141,27 +144,27 @@ function questionFunction3() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction4();
+    timeLeft -= 10;
+    question4();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction4();
+    timeLeft -= 10;
+    question4();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction4();
+    timeLeft -= 10;
+    question4();
   };
   answerBtnFour.onclick = function () {
     alert("Correct!");
     score++;
-    questionFunction4();
+    question4();
   };
 }
 
-function questionFunction4() {
+function question4() {
   questionEl.textContent = questionList[3].question;
   answerBtnOne.textContent = questionList[3].options[0];
   answerBtnTwo.textContent = questionList[3].options[1];
@@ -170,27 +173,26 @@ function questionFunction4() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction5();
+    timeLeft -= 10;
+    question5();
   };
   answerBtnTwo.onclick = function () {
     alert("Correct!");
     score++;
-    questionFunction5();
+    question5();
   };
   answerBtnThree.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction5();
+    timeLeft -= 10;
+    question5();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    questionFunction5();
+    timeLeft -= 10;
+    question5();
   };
 }
-
-function questionFunction5() {
+function question5() {
   questionEl.textContent = questionList[4].question;
   answerBtnOne.textContent = questionList[4].options[0];
   answerBtnTwo.textContent = questionList[4].options[1];
@@ -199,29 +201,31 @@ function questionFunction5() {
 
   answerBtnOne.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    showScore();
+    timeLeft -= 10;
+    finalScore();
   };
   answerBtnTwo.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    showScore();
+    timeLeft -= 10;
+    finalScore();
   };
   answerBtnThree.onclick = function () {
     alert("Correct!");
     score++;
-    timeLeft -= 5;
-    showScore();
+    timeLeft -= 10;
+    finalScore();
   };
   answerBtnFour.onclick = function () {
     alert("Incorrect :(");
-    timeLeft -= 5;
-    showScore();
+    timeLeft -= 10;
+    finalScore();
   };
 }
-
-//Last but not least the show score function - which is only called after the final question as been answered. This also reloads the window after showing your score.
-function showScore() {
-  alert("You're all done!! Score: " + score);
+//Shows final score via alert, only called after final question is answered.
+//Reloads window after showing your score.
+function finalScore() {
+  alert("You're all done! Score: " + score + " out of 5");
   window.location.reload(false);
 }
+//Event listener that starts quiz by calling tartTimer
+startBtn.addEventListener("click", startTimer);

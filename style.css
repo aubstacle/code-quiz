@@ -20,7 +20,7 @@ body {
   background-color: #454545;
   color: white;
   width: 616px;
-  height: 325px;
+  height: 345px;
   box-shadow: 5px;
 }
 
@@ -37,8 +37,8 @@ body {
   font-weight: bolder;
   text-align: center;
   position: relative;
-  left: 22.1em;
-  bottom: 3.1em;
+  left: 8em;
+  bottom: .6em
 }
  
 #startQuiz {
