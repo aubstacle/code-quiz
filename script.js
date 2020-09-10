@@ -49,10 +49,10 @@ var questionList = [
   },
 ];
 
-//Event listener for starting the game, calling the startTimer function
+//Event listener for starting the quiz, calling the startTimer function
 startBtn.addEventListener("click", startTimer);
 
-//Start timer function that simultaneously starts the timer, calls the first question function and also ends the game 
+//Start timer function that simultaneously starts the timer, calls the first question function and also calls the end of quiz if time runs out
 function startTimer() {
   questionFunction();
   timerInterval = setInterval(function () {
@@ -65,13 +65,15 @@ function startTimer() {
   }, 1000);
 }
 
-// End Game
+// End quiz function lets you know that you're out of time, gives you your score, clears the timer interval and reloads the window to start the quiz over
 function endQuiz() {
   alert("You're out of time!! Score: " + score);
   clearInterval(timerInterval);
   window.location.reload(false);
 }
 
+// Next 5 questionFunctions (lines 77-221) are for each of the 5 questions - I couldn't figure out how to refactor this into something more consolidated but it works!!
+// Each one calls on the next questionFunction with a click on any of the answers
 function questionFunction() {
   questionEl.textContent = questionList[0].question;
   answerBtnOne.textContent = questionList[0].options[0];
@@ -218,7 +220,8 @@ function questionFunction5() {
   };
 }
 
-function showScore(){
-    alert("You're all done!! Score: " + score);
-    window.location.reload(false);
+//Last but not least the show score function - which is only called after the final question as been answered. This also reloads the window after showing your score.
+function showScore() {
+  alert("You're all done!! Score: " + score);
+  window.location.reload(false);
 }
