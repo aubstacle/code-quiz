@@ -20,13 +20,31 @@ body {
   background-color: #454545;
   color: white;
   width: 616px;
-  height: 300px;
-  box-shadow: 5px 10px;
+  height: 325px;
+  box-shadow: 5px;
 }
 
 #question {
   text-align: center;
   font-weight: bolder;
+}
+
+#countdownTimer {
+  width: 200px;
+  height: 50px;
+  background-color: teal;
+  border-radius: 5px;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: 350px;
+  margin-bottom: 300px;
+}
+ 
+#startQuiz {
+  width: 200px;
+  height: 50px;
+  margin-left: 50px;
+  background-color: teal;
 }
 
 button {
